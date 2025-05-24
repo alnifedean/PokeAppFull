@@ -1,10 +1,28 @@
 package com.pokemon.app.pokebattle.Model;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+
+@Entity
+@Table(name = "attacks")
 public class Move {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @NotBlank
+    @Column
     private String nameMove;
+    @NotBlank
+    @Column
     private String typeMove;
+    @NotNull
+    @Min(1)
+    @Column
     private int minLevel;
 
     public Move(){};
