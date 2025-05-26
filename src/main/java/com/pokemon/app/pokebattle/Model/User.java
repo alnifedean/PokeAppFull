@@ -1,13 +1,43 @@
 package com.pokemon.app.pokebattle.Model;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
+import java.util.List;
+
+@Entity
+@Table(name = "users")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @NotBlank
+    @Column
     private String userName;
+    @NotBlank
+    @Column
     private String name;
+    @NotBlank
+    @Column
     private String email;
+    @NotNull
+    @Min(1)
+    @Column
     private long age;
+    @NotBlank
+    @Column
     private String password;
+    @NotEmpty
+    @Column
+    private List<Pokemon> myTeam;
+    @NotEmpty
+    @Column
+    private List<Pokemon> storagedPokemons;
 
     public User(){};
 
@@ -48,6 +78,17 @@ public class User {
         return password;}
     public void setPassword(String password) {
         this.password = password;}
+
+    public List<Pokemon> getMyTeam() {
+        return myTeam;}
+    public void setMyTeam(List<Pokemon> myTeam) {
+        this.myTeam = myTeam;}
+
+    public List<Pokemon> getStoragedPokemons() {
+        return storagedPokemons;}
+    public void setStoragedPokemons(List<Pokemon> storagedPokemons) {
+        this.storagedPokemons = storagedPokemons;}
+
 
     @Override
     public String toString(){
